@@ -206,7 +206,7 @@ class AuthorIdentity:
         if not os.path.exists(output_train_parser_folder):
             os.makedirs(output_train_parser_folder)
 
-        for author_i in range(1, 2): # len(self.author_count_df.index)
+        for author_i in range(len(self.author_count_df.index)):
             author_name = self.author_count_df.ix[author_i, "author"]
             print("author_i: {0} :: name: {1}".format(author_i, author_name))
             author_row_index_arr = self.train_df.index[self.train_df['author'] == author_name].tolist()
@@ -965,6 +965,8 @@ class AuthorIdentity:
 if __name__ == "__main__":
     # True: Load the data from csv, pre-process and write into text file.
     # False: Read the data from text file written during pre-processing
+    
+    # Uncomment/Comment the lines according to your need.
     flag_pre_process = False
     compare_results = False
     author_identity = AuthorIdentity(set_of_sentences=True, train_folder="../data/machinehack/train",
